@@ -35,8 +35,12 @@ class App extends Component {
 
   render() {
     const { tasks } = this.state
-    const activeTasks = tasks.filter(task => task.active)
-    const taskHistory = tasks.filter(task => !task.active)
+    const activeTasks = []
+    const taskHistory = []
+    tasks.forEach(task => {
+      task.active ? activeTasks.push(task) : taskHistory.push(task)
+    })
+
     return (
       <>
         <NewTaskForm addNewTask={this.addNewTask} />
